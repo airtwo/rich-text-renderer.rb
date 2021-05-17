@@ -4,7 +4,7 @@ module RichTextRenderer
   # Asset hyperlink renderer
   class AssetHyperlinkRenderer < BaseBlockRenderer
     # Anchor HTML Tag
-    ANCHOR_HTML = ->(url, text) { "<a href=\"#{url}\">#{text}</a>" }
+    ANCHOR_HTML = ->(url, text) { "<a href=\"#{url}\"><img src=\"#{url}\" alt=>\"#{text}\"</a>" }
 
     # Renders asset nodes
     def render(node)
