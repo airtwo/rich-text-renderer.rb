@@ -5,3 +5,4 @@ coverage
 Gemfile.lock
 .idea
 *.DS_Store
+.bundle
