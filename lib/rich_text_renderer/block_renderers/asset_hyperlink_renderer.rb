@@ -20,7 +20,7 @@ module RichTextRenderer
       return render_asset(asset, node) if asset.class.ancestors.map(&:to_s).any? { |name| name.include?('Asset') }
 
       if asset.is_a?(::Hash)
-        unless asset.key?('fields') && asset['fields'].key?('file')
+        unless asset.key?('url') && asset.key?('title')
           fail "Node target is not an asset - Node: #{node} Asset: #{asset}"
         end
 
@@ -44,8 +44,8 @@ module RichTextRenderer
     def render_hash(asset, node = nil)
       render!(
         ANCHOR_HTML,
-        asset['fields']['file']['url'],
-        renders_node?(node) ? node : asset['fields']['title'],
+        asset['url'],
+        renders_node?(node) ? node : asset['title'],
         renders_node?(node)
       )
     end
